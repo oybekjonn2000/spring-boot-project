@@ -6,8 +6,7 @@ import net.idrok.springbootecomerce.dto.PurchaseResponse;
 import net.idrok.springbootecomerce.entity.Customer;
 import net.idrok.springbootecomerce.entity.Order;
 import net.idrok.springbootecomerce.entity.OrderItem;
-import net.idrok.springbootecomerce.service.CheckourService;
-import org.springframework.beans.factory.annotation.Autowired;
+import net.idrok.springbootecomerce.service.CheckoutService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,7 +14,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Service
-public class CheckoutServiceImpl implements CheckourService {
+public class CheckoutServiceImpl implements CheckoutService {
     private CustomerRepository customerRepository;
 
 
@@ -41,7 +40,7 @@ public class CheckoutServiceImpl implements CheckourService {
         orderItems.forEach(item-> order.add(item));
 
         //populate order with BillingAddress and Shipping Address
-        order.setBilllingAddress(purchase.getBillingAddress());
+        order.setBillingAddress(purchase.getBillingAddress());
         order.setShippingAddress(purchase.getShippingAddress());
 
         // populate customer with order

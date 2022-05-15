@@ -2,24 +2,29 @@ package net.idrok.springbootecomerce.controller;
 
 import net.idrok.springbootecomerce.dto.Purchase;
 import net.idrok.springbootecomerce.dto.PurchaseResponse;
-import net.idrok.springbootecomerce.service.CheckourService;
+import net.idrok.springbootecomerce.service.CheckoutService;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("api/checkout")
+@RestController
+@RequestMapping("/api/checkout")
 public class CheckoutController {
 
-    private CheckourService checkourService;
+    private CheckoutService checkoutService;
 
-    public CheckoutController(CheckourService checkourService){
-        this.checkourService= checkourService;
+    public CheckoutController(CheckoutService checkoutService) {
+        this.checkoutService = checkoutService;
     }
 
     @PostMapping("/purchase")
-    public PurchaseResponse placeorder(@RequestBody Purchase purchase){
-        PurchaseResponse purchaseResponse= checkourService.placeOrder(purchase);
+    public PurchaseResponse placeOrder(@RequestBody Purchase purchase) {
+
+        PurchaseResponse purchaseResponse = checkoutService.placeOrder(purchase);
+
         return purchaseResponse;
     }
 
 }
+
+
+
