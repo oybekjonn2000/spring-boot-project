@@ -1,9 +1,6 @@
 package net.idrok.springbootecomerce.config;
 
-import net.idrok.springbootecomerce.entity.Country;
-import net.idrok.springbootecomerce.entity.Product;
-import net.idrok.springbootecomerce.entity.ProductCategory;
-import net.idrok.springbootecomerce.entity.State;
+import net.idrok.springbootecomerce.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +41,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         disableHttpMethods(Product.class, config, theUnsupportedActions);
         disableHttpMethods(Country.class, config, theUnsupportedActions);
         disableHttpMethods(State.class, config, theUnsupportedActions);
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
 
 
         //call an internal helper method
