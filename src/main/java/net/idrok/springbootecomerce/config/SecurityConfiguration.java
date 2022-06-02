@@ -2,6 +2,7 @@ package net.idrok.springbootecomerce.config;
 
 import com.okta.spring.boot.oauth.Okta;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
+
     protected void configure(HttpSecurity http) throws Exception {
       // protect endpoint /api/orders
 
@@ -25,6 +27,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // force a non-empty response body for 401 's to make the response more friednly
         Okta.configureResourceServer401ResponseBody(http);
+
+        //dsable CSRF since we are not using Cookies for session tracking
+
+        http.csrf().disable();
 
 }
 }
